@@ -1,0 +1,6 @@
+@wordmedia_HostAddress = http://localhost:5129
+
+GET {{wordmedia_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

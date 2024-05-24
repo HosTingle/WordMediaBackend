@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wordmedia", "wordmedia\wordmedia.csproj", "{6AD51B98-A819-4878-BEC9-46A806A2A755}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AD51B98-A819-4878-BEC9-46A806A2A755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AD51B98-A819-4878-BEC9-46A806A2A755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AD51B98-A819-4878-BEC9-46A806A2A755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AD51B98-A819-4878-BEC9-46A806A2A755}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CFC7D0D5-C9D0-4566-B1E2-C9A547245663}
+	EndGlobalSection
+EndGlobal
