@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using wordmedia.Dtos.UserWordDtos;
 using wordmedia.Dtos.UserWordsDtos;
 using wordmedia.Repositories.UserWords;
 using wordmedia.Repositories.WordRepository;
@@ -15,6 +16,13 @@ namespace wordmedia.Controllers
         public UserWordsController(IUserWordsRepository userWordsRepository) 
         {
             _userWordsRepository = userWordsRepository;
+
+        }
+        [HttpGet("GetAllWordsbyUserId")] 
+        public async Task<IActionResult> WordList(int id)
+        {
+            var values = await _userWordsRepository.GetAllWordsbyUserId(id);
+            return Ok(values);
         }
 
         [HttpGet("getallUserWords")]
@@ -24,9 +32,9 @@ namespace wordmedia.Controllers
             return Ok(values);
         }
         [HttpPost("CreatUserWords")]
-        public async Task<IActionResult> CreatUserWord(UserWordDto userWordsDto) 
+        public async Task<IActionResult> CreatUserWord(CreateUserWordDtocs userWordsDto) 
         {
-            await _userWordsRepository.CreatUserWord(userWordsDto); 
+            _userWordsRepository.CreatUserWord(userWordsDto); 
             return Ok("UserWord Oluşturuldu");
         }
         [HttpDelete("DeleteUserWords")]

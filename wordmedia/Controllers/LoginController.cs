@@ -23,7 +23,7 @@ namespace wordmedia.Controllers
             string query2 = "Select userid From users where username=@userName and password=@passWord";
             var parameters = new DynamicParameters();
           
-            parameters.Add("PassWord",createLoginDto.Password);
+            parameters.Add("@PassWord",createLoginDto.Password);
             parameters.Add("@userName", createLoginDto.Username);
             using (var connection = _context.CreatConnection())
             {

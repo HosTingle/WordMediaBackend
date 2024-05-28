@@ -14,11 +14,12 @@ namespace SweapCard.Tools
             if (!string.IsNullOrWhiteSpace(model.role))
                 claims.Add(new Claim(ClaimTypes.Role, model.role));
 
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()));
+            claims.Add(new Claim("UserId", model.Id.ToString()));
 
             if (!string.IsNullOrWhiteSpace(model.username))
             {
                 claims.Add(new Claim("Username",model.username));
+     
             }
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.key));
             var signinCredentials= new SigningCredentials(key,SecurityAlgorithms.HmacSha256);

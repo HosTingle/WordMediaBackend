@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using wordmedia.Dtos.UserWordDtos;
 using wordmedia.Dtos.UserWordsDtos;
 using wordmedia.Model.DapperContext;
 using wordmedia.Repositories.UserRepository;
@@ -16,7 +17,7 @@ namespace wordmedia.Repositories.UserWords
  
         }
          
-        public async Task<int> CreatUserWord(UserWordDto userWordsDto) 
+        public async void CreatUserWord(CreateUserWordDtocs userWordsDto) 
         {           
             string query = "insert into userword (userid,wordid,wordcounter) values (@userId,@wordId,@wordCounter)";
             var paramaters = new DynamicParameters();
@@ -25,18 +26,7 @@ namespace wordmedia.Repositories.UserWords
             paramaters.Add("wordCounter", 0);
             using (var connection = _context.CreatConnection())
             {
-                int? result = await connection.QueryFirstOrDefaultAsync<int?>(query, paramaters);
-                int? wordCounterId = result;
-
-                if (wordCounterId.HasValue)
-                {
-                    return wordCounterId.Value;
-                }
-                else
-                {
-                    // İşlem başarısız olduysa burada bir hata işleyebilirsiniz.
-                    throw new Exception("WordCounter eklenemedi.");
-                }
+                await connection.ExecuteAsync(query, paramaters);
             }
         }
 
@@ -58,6 +48,16 @@ namespace wordmedia.Repositories.UserWords
             using (var connection = _context.CreatConnection())
             {
                 var values = await connection.QueryAsync<UserWordDto>(query);
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<GetAllWordbyUseridDto>> GetAllWordsbyUserId(int id)
+        {
+            string query = $"Select * From userword Where userid ={id} Order by wordforuserid asc";
+            using (var connection = _context.CreatConnection())
+            {
+                var values = await connection.QueryAsync<GetAllWordbyUseridDto>(query);
                 return values.ToList();
             }
         }
